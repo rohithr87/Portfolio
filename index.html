@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rohith R | Machine Learning Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { background-color: #0f172a; color: #f8fafc; }
+        .gradient-text { background: linear-gradient(90deg, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .card { background: #1e293b; border: 1px solid #334155; transition: transform 0.2s; }
+        .card:hover { transform: translateY(-5px); border-color: #38bdf8; }
+    </style>
+</head>
+<body class="font-sans">
+
+    <nav class="p-6 flex justify-between items-center max-w-6xl mx-auto">
+        <div class="text-2xl font-bold gradient-text">RR.</div>
+        <div class="space-x-6 text-sm font-medium">
+            <a href="#projects" class="hover:text-sky-400">Projects</a>
+            <a href="#skills" class="hover:text-sky-400">Skills</a>
+            <a href="mailto:rohithparambil@gmail.com" class="bg-sky-500 px-4 py-2 rounded-lg text-white">Hire Me</a>
+        </div>
+    </nav>
+
+    <section class="max-w-6xl mx-auto px-6 py-20 text-center lg:text-left lg:flex items-center">
+        <div class="lg:w-2/3">
+            <h1 class="text-5xl lg:text-7xl font-extrabold mb-4">Hi, I'm <span class="gradient-text">Rohith R</span></h1>
+            <p class="text-xl text-slate-400 mb-8 max-w-2xl">
+                Final-year Computer Science student specializing in Machine Learning and Deep Learning. 
+                Building end-to-end AI solutions with a focus on predictive analytics and computer vision.
+            </p>
+            <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
+                <a href="https://github.com/rohithr87" class="card px-6 py-3 rounded-xl flex items-center gap-2">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="https://linkedin.com/in/rohith-r-55215b290/" class="card px-6 py-3 rounded-xl flex items-center gap-2">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+            </div>
+        </div>
+        <div class="lg:w-1/3 mt-12 lg:mt-0 flex justify-center">
+            <div class="w-64 h-64 bg-sky-500/20 rounded-full border-4 border-sky-500/50 overflow-hidden flex items-center justify-center">
+    <img src="static/1755189804789.jpg" alt="Rohith R" class="w-full h-full object-cover">
+</div>
+        </div>
+    </section>
+</section>
+
+<section id="projects" class="max-w-6xl mx-auto px-6 py-10">
+<section id="projects" class="max-w-6xl mx-auto px-6 py-10">
+    <h2 class="text-3xl font-bold mb-12 flex items-center gap-4">
+        <span class="h-1 w-12 bg-sky-500"></span> Technical Projects
+    </h2>
+    <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <div class="card p-8 rounded-3xl flex flex-col justify-between">
+            <div>
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-2xl font-bold">Molecular Toxicity Prediction</h3>
+                    <i class="fas fa-flask text-sky-400 text-xl"></i>
+                </div>
+                <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                    Built a deep learning-based toxicity prediction system using Graph Convolutional Networks (DeepChem) trained on the Tox21 dataset. 
+                    Features a full-stack platform with a Flask backend and React frontend for real-time SMILES input and results visualization.
+                </p>
+                <ul class="text-slate-500 text-xs mb-6 space-y-2 list-disc ml-4">
+                    <li>Integrated RDKit to compute molecular descriptors like Molecular Weight and LogP.</li>
+                    <li>Developed 3D visualization using RDKit + Three.js with dynamic confidence charts.</li>
+                    <li>Utilized Gemini AI for natural-language scientific interpretations.</li>
+                </ul>
+            </div>
+            <div class="flex flex-wrap gap-2 text-[10px] font-mono text-sky-300 uppercase">
+                <span>#DeepChem</span> <span>#React</span> <span>#Flask</span> <span>#RDKit</span> <span>#Gemini-AI</span>
+            </div>
+        </div>
+
+        <div class="card p-8 rounded-3xl flex flex-col justify-between">
+            <div>
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-2xl font-bold">Self-Driving Behavioral Cloning</h3>
+                    <i class="fas fa-car text-sky-400 text-xl"></i>
+                </div>
+                <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                    Developed a CNN-based behavioral cloning model using TensorFlow to predict steering angles in real time within the Udacity simulator environment.
+                </p>
+                <ul class="text-slate-500 text-xs mb-6 space-y-2 list-disc ml-4">
+                    <li>Processed and augmented 90,000+ driving images to improve generalization.</li>
+                    <li>Implemented data balancing, normalization, and cropping pipelines for model stability.</li>
+                    <li>Achieved smooth lane navigation in simulation environments.</li>
+                </ul>
+            </div>
+            <div class="flex flex-wrap gap-2 text-[10px] font-mono text-sky-300 uppercase">
+                <span>#TensorFlow</span> <span>#CNN</span> <span>#ComputerVision</span> <span>#Python</span>
+            </div>
+        </div>
+
+        <div class="card p-8 rounded-3xl flex flex-col justify-between">
+            <div>
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-2xl font-bold">Heart Disease Prediction System</h3>
+                    <i class="fas fa-heartbeat text-sky-400 text-xl"></i>
+                </div>
+                <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                    Engineered a clinically meaningful ML pipeline to predict heart disease risk, achieving a Recall of 0.92 and AUC of 0.94.
+                </p>
+                <ul class="text-slate-500 text-xs mb-6 space-y-2 list-disc ml-4">
+                    <li>Analyzed 1,025 patient records using Scikit-learn during internship at EBTS.</li>
+                    <li>Applied IQR outlier removal, VIF multicollinearity checks, and feature scaling.</li>
+                    <li>Selected Logistic Regression over tree-based models to ensure reliability.</li>
+                </ul>
+            </div>
+            <div class="flex flex-wrap gap-2 text-[10px] font-mono text-sky-300 uppercase">
+                <span>#Scikit-Learn</span> <span>#Healthcare</span> <span>#EDA</span> <span>#ML-Pipeline</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section id="experience" class="max-w-6xl mx-auto px-6 py-10">
+    <h2 class="text-3xl font-bold mb-12 flex items-center gap-4">
+        <span class="h-1 w-12 bg-sky-500"></span> Internships
+    </h2>
+    <div class="grid md:grid-cols-1 gap-6">
+        
+        <div class="card p-8 rounded-3xl border-l-4 border-l-sky-500">
+            <div class="flex flex-col md:flex-row justify-between mb-4">
+                <div>
+                    <h3 class="text-xl font-bold text-white">Machine Learning Intern</h3>
+                    <p class="text-sky-400 font-medium">Enterprise Building Training Solutions (EBTS)</p>
+                </div>
+                <div class="text-slate-400 font-mono text-sm mt-2 md:mt-0">
+                    May — June 2025 
+                </div>
+            </div>
+            <ul class="text-slate-400 text-sm space-y-2 list-disc ml-5">
+                <li>Built a Heart Disease Prediction pipeline using Python and Scikit-learn on 1,025 records.</li>
+                <li>Performed IQR outlier removal, VIF multicollinearity checks, and feature scaling.</li>
+                <li>Selected Logistic Regression (F1: 0.89, AUC: 0.94) as the optimal healthcare model.</li>
+            </ul>
+        </div>
+
+        <div class="card p-8 rounded-3xl border-l-4 border-l-purple-500">
+            <div class="flex flex-col md:flex-row justify-between mb-4">
+                <div>
+                    <h3 class="text-xl font-bold text-white">Flutter Android App Development Intern</h3>
+                    <p class="text-purple-400 font-medium">Muthoot Institute of Technology & Science (MITS)</p>
+                </div>
+                <div class="text-slate-400 font-mono text-sm mt-2 md:mt-0">
+                    June 2 — 25, 2025
+                </div>
+            </div>
+            <ul class="text-slate-400 text-sm space-y-2 list-disc ml-5">
+                <li>Completed intensive summer internship focusing on Flutter Android App Development.</li>
+                <li>Applied Functional Programming principles to mobile application architecture.</li>
+                <li>Gained hands-on experience in cross-platform UI design and state management.</li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+    <section id="skills" class="max-w-6xl mx-auto px-6 py-20">
+        <div class="card p-10 rounded-3xl bg-slate-800/50">
+            <h2 class="text-3xl font-bold mb-8">Technical Arsenal</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div>
+                    <h4 class="text-sky-400 font-bold mb-2">Languages</h4>
+                    <p class="text-sm">Python, Java, SQL</p>
+                </div>
+                <div>
+                    <h4 class="text-sky-400 font-bold mb-2">ML Frameworks</h4>
+                    <p class="text-sm">TensorFlow, PyTorch, Scikit-learn, Keras</p>
+                </div>
+                <div>
+                    <h4 class="text-sky-400 font-bold mb-2">Tools</h4>
+                    <p class="text-sm">Flask, Streamlit, Git, OpenCV</p>
+                </div>
+                <div>
+                    <h4 class="text-sky-400 font-bold mb-2">Core CS</h4>
+                    <p class="text-sm">DSA, DBMS, OS</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center py-10 border-t border-slate-800 text-slate-500 text-sm">
+        <p>&copy; 2026 <a href="https://www.linkedin.com/in/ananthupm/" >ananthu built with passion in kerala.</a></p>
+    </footer>
+
+</body>
+</html>
