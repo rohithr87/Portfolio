@@ -4,207 +4,970 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rohith R | Machine Learning Developer</title>
+    <meta name="description" content="Rohith R — Final-year B.Tech CSE student at CUSAT specializing in Machine Learning, Deep Learning, and Computer Vision. Building end-to-end AI solutions.">
+    <meta name="keywords" content="Machine Learning, Deep Learning, Computer Vision, PyTorch, TensorFlow, Python, AI Engineer, Rohith R">
+    <meta name="author" content="Rohith R">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Rohith R | Machine Learning Developer">
+    <meta property="og:description" content="Final-year CSE student at CUSAT building end-to-end AI solutions with Python, PyTorch, and TensorFlow.">
+    <meta property="og:type" content="website">
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* ── Base ── */
         body { background-color: #0f172a; color: #f8fafc; }
-        .gradient-text { background: linear-gradient(90deg, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .card { background: #1e293b; border: 1px solid #334155; transition: transform 0.2s; }
-        .card:hover { transform: translateY(-5px); border-color: #38bdf8; }
+        html { scroll-behavior: smooth; }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #38bdf8, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, rgba(56,189,248,0.08), rgba(129,140,248,0.08));
+        }
+        .card {
+            background: #1e293b;
+            border: 1px solid #334155;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: #38bdf8;
+            box-shadow: 0 12px 40px rgba(56, 189, 248, 0.1);
+        }
+
+        /* ── Animations ── */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse-ring {
+            0%   { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.4); }
+            70%  { box-shadow: 0 0 0 20px rgba(56, 189, 248, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to   { width: 100%; }
+        }
+        .animate-fade-in-up { animation: fadeInUp 0.7s ease-out forwards; }
+        .animate-pulse-ring  { animation: pulse-ring 2.5s ease infinite; }
+
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+
+        /* ── Scroll reveal ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── Skill bar ── */
+        .skill-bar {
+            background: #334155;
+            border-radius: 9999px;
+            overflow: hidden;
+            height: 8px;
+        }
+        .skill-bar-fill {
+            height: 100%;
+            border-radius: 9999px;
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            width: 0;
+            transition: width 1.5s ease;
+        }
+        .skill-bar-fill.animated {
+            /* width set via style attribute */
+        }
+
+        /* ── Timeline ── */
+        .timeline-line {
+            position: absolute;
+            left: 1.25rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #334155;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: 0.75rem;
+            top: 0.5rem;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            border: 3px solid #38bdf8;
+            background: #0f172a;
+            z-index: 1;
+        }
+
+        /* ── Mobile nav ── */
+        .mobile-menu { display: none; }
+        .mobile-menu.open { display: flex; }
+
+        /* ── Stat counter ── */
+        .stat-card { text-align: center; padding: 1.5rem; }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* ── Selection ── */
+        ::selection {
+            background: rgba(56, 189, 248, 0.3);
+            color: #f8fafc;
+        }
+
+        /* ── Scrollbar ── */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+        /* ── Back to top ── */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 3rem;
+            height: 3rem;
+            background: #38bdf8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0f172a;
+            font-size: 1.2rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            z-index: 50;
+            box-shadow: 0 4px 20px rgba(56, 189, 248, 0.3);
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .back-to-top:hover {
+            transform: translateY(-3px);
+        }
+
+        /* ── Nav active link ── */
+        .nav-link-active {
+            color: #38bdf8 !important;
+        }
     </style>
 </head>
-<body class="font-sans">
+<body class="font-sans antialiased">
 
-    <nav class="p-6 flex justify-between items-center max-w-6xl mx-auto">
-        <div class="text-2xl font-bold gradient-text">RR.</div>
-        <div class="space-x-6 text-sm font-medium">
-            <a href="#projects" class="hover:text-sky-400">Projects</a>
-            <a href="#skills" class="hover:text-sky-400">Skills</a>
-            <a href="mailto:rohithparambil@gmail.com" class="bg-sky-500 px-4 py-2 rounded-lg text-white">Hire Me</a>
+<!-- ════════════════════════════════════════════════════════
+     NAVIGATION
+     ════════════════════════════════════════════════════════ -->
+<nav class="fixed top-0 w-full z-50 backdrop-blur-lg bg-slate-900/80 border-b border-slate-800">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="#" class="text-2xl font-bold gradient-text tracking-tight">RR.</a>
+
+        <!-- Desktop -->
+        <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
+            <a href="#about"         class="nav-link hover:text-sky-400 transition-colors">About</a>
+            <a href="#projects"      class="nav-link hover:text-sky-400 transition-colors">Projects</a>
+            <a href="#experience"    class="nav-link hover:text-sky-400 transition-colors">Experience</a>
+            <a href="#skills"        class="nav-link hover:text-sky-400 transition-colors">Skills</a>
+            <a href="#education"     class="nav-link hover:text-sky-400 transition-colors">Education</a>
+            <a href="#certifications" class="nav-link hover:text-sky-400 transition-colors">Certifications</a>
+            <a href="mailto:rohithparambil@gmail.com"
+               class="bg-sky-500 hover:bg-sky-600 px-5 py-2.5 rounded-xl text-white transition-all hover:shadow-lg hover:shadow-sky-500/25">
+                <i class="fas fa-envelope mr-2"></i>Hire Me
+            </a>
         </div>
-    </nav>
 
-    <section class="max-w-6xl mx-auto px-6 py-20 text-center lg:text-left lg:flex items-center">
-        <div class="lg:w-2/3">
-            <h1 class="text-5xl lg:text-7xl font-extrabold mb-4">Hi, I'm <span class="gradient-text">Rohith R</span></h1>
-            <p class="text-xl text-slate-400 mb-8 max-w-2xl">
-                Final-year Computer Science student specializing in Machine Learning and Deep Learning. 
-                Building end-to-end AI solutions with a focus on predictive analytics and computer vision.
+        <!-- Mobile toggle -->
+        <button id="menu-toggle" class="md:hidden text-slate-300 text-xl" aria-label="Toggle menu">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="mobile-menu flex-col md:hidden bg-slate-900 border-t border-slate-800 px-6 py-4 space-y-4 text-sm">
+        <a href="#about"          class="hover:text-sky-400 py-2">About</a>
+        <a href="#projects"       class="hover:text-sky-400 py-2">Projects</a>
+        <a href="#experience"     class="hover:text-sky-400 py-2">Experience</a>
+        <a href="#skills"         class="hover:text-sky-400 py-2">Skills</a>
+        <a href="#education"      class="hover:text-sky-400 py-2">Education</a>
+        <a href="#certifications"  class="hover:text-sky-400 py-2">Certifications</a>
+        <a href="mailto:rohithparambil@gmail.com" class="bg-sky-500 px-4 py-2.5 rounded-lg text-white text-center">Hire Me</a>
+    </div>
+</nav>
+
+<!-- Back to top button -->
+<a href="#" id="back-to-top" class="back-to-top" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+</a>
+
+
+<!-- ════════════════════════════════════════════════════════
+     HERO
+     ════════════════════════════════════════════════════════ -->
+<section class="max-w-6xl mx-auto px-6 pt-32 pb-20 text-center lg:text-left lg:flex items-center min-h-screen">
+    <div class="lg:w-2/3 animate-fade-in-up">
+        <p class="text-sky-400 font-mono text-sm mb-4 tracking-wider">👋 Welcome to my portfolio</p>
+        <h1 class="text-5xl lg:text-7xl font-extrabold mb-6 leading-tight">
+            Hi, I'm <span class="gradient-text">Rohith R</span>
+        </h1>
+        <p class="text-lg lg:text-xl text-slate-400 mb-4 max-w-2xl leading-relaxed">
+            Final-year <strong class="text-slate-300">Computer Science</strong> student at
+            <strong class="text-slate-300">CUSAT</strong> specializing in
+            <strong class="text-slate-300">Computer Vision</strong> and
+            <strong class="text-slate-300">Deep Learning</strong>.
+        </p>
+        <p class="text-slate-500 mb-8 max-w-2xl leading-relaxed">
+            Building end-to-end AI solutions — from training Faster R-CNN object detectors to deploying 
+            production-ready web apps. Proficient in Python, PyTorch, TensorFlow, and OpenCV with a 
+            strong foundation in neural network architectures and transfer learning.
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
+            <a href="https://github.com/rohithr87"
+               target="_blank" rel="noopener"
+               class="card px-6 py-3 rounded-xl flex items-center gap-2 hover:text-sky-400">
+                <i class="fab fa-github"></i> GitHub
+            </a>
+            <a href="https://linkedin.com/in/rohith-r-55215b290/"
+               target="_blank" rel="noopener"
+               class="card px-6 py-3 rounded-xl flex items-center gap-2 hover:text-sky-400">
+                <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+            <a href="https://huggingface.co/rohithr12"
+               target="_blank" rel="noopener"
+               class="card px-6 py-3 rounded-xl flex items-center gap-2 hover:text-sky-400">
+                <span class="text-lg">🤗</span> Hugging Face
+            </a>
+            <a href="static/Rohith_R_Resume.pdf"
+               target="_blank"
+               class="bg-sky-500 hover:bg-sky-600 px-6 py-3 rounded-xl text-white flex items-center gap-2 transition-all hover:shadow-lg hover:shadow-sky-500/25 font-semibold">
+                <i class="fas fa-download"></i> Resume
+            </a>
+        </div>
+    </div>
+    <div class="lg:w-1/3 mt-12 lg:mt-0 flex justify-center animate-fade-in-up delay-200">
+        <div class="w-64 h-64 rounded-full border-4 border-sky-500/50 overflow-hidden animate-pulse-ring">
+            <img src="static/1755189804789.jpg" alt="Rohith R — Machine Learning Developer" class="w-full h-full object-cover" loading="eager">
+        </div>
+    </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════
+     STATS BAR
+     ════════════════════════════════════════════════════════ -->
+<section class="max-w-6xl mx-auto px-6 -mt-8 mb-16 reveal">
+    <div class="card rounded-3xl p-6 grid grid-cols-2 md:grid-cols-5 gap-4">
+        <div class="stat-card">
+            <div class="stat-number" data-target="9.03" data-decimal="true">0</div>
+            <p class="text-slate-400 text-sm mt-1">CGPA</p>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" data-target="4">0</div>
+            <p class="text-slate-400 text-sm mt-1">Projects Built</p>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" data-target="2">0</div>
+            <p class="text-slate-400 text-sm mt-1">Internships</p>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" data-target="10">0</div>
+            <p class="text-slate-400 text-sm mt-1">Technologies</p>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" data-target="1">0</div>
+            <p class="text-slate-400 text-sm mt-1">Live Deployments</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════
+     ABOUT ME
+     ════════════════════════════════════════════════════════ -->
+<section id="about" class="max-w-6xl mx-auto px-6 py-20 reveal">
+    <h2 class="text-3xl font-bold mb-12 flex items-center gap-4">
+        <span class="h-1 w-12 bg-sky-500 rounded"></span> About Me
+    </h2>
+    <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <div>
+            <p class="text-slate-400 leading-relaxed mb-6">
+                I'm a passionate Machine Learning developer from <strong class="text-slate-300">Kollam, Kerala</strong>,
+                currently in the final year of my B.Tech in Computer Science at
+                <strong class="text-slate-300">Cochin University of Science and Technology (CUSAT)</strong>.
+                I specialize in turning raw data into intelligent systems that solve real-world problems — from
+                detecting potholes on roads using Faster R-CNN to predicting heart disease risk with clinical-grade precision.
             </p>
-            <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
-                <a href="https://github.com/rohithr87" class="card px-6 py-3 rounded-xl flex items-center gap-2">
-                    <i class="fab fa-github"></i> GitHub
+            <p class="text-slate-400 leading-relaxed mb-6">
+                My approach combines solid fundamentals in computer vision, statistical analysis, and neural network 
+                architectures with practical engineering skills in model deployment. I believe in building 
+                <strong class="text-slate-300">end-to-end solutions</strong> — from exploratory analysis and data 
+                augmentation to production-ready web applications with Docker and Gradio.
+            </p>
+            <p class="text-slate-400 leading-relaxed">
+                I thrive at the intersection of research and engineering. Whether it's implementing Feature Pyramid 
+                Networks for multi-scale detection or designing clean React frontends for ML backends, I bring the 
+                same rigor to every layer of the stack.
+            </p>
+        </div>
+        <div class="card rounded-3xl p-8">
+            <h3 class="text-lg font-bold mb-6 text-sky-400">Quick Facts</h3>
+            <ul class="space-y-4 text-sm">
+                <li class="flex items-start gap-3">
+                    <i class="fas fa-map-marker-alt text-sky-400 mt-1 w-5 text-center"></i>
+                    <span class="text-slate-300">Kollam, Kerala, India</span>
+                </li>
+                <li class="flex items-start gap-3">
+                    <i class="fas fa-graduation-cap text-sky-400 mt-1 w-5 text-center"></i>
+                    <span class="text-slate-300">B.Tech CSE @ CUSAT — CGPA: <strong>9.03</strong></span>
+                </li>
+                <li class="flex items-start gap-3">
+                    <i class="fas fa-brain text-sky-400 mt-1 w-5 text-center"></i>
+                    <span class="text-slate-300">Computer Vision, Deep Learning, Object Detection</span>
+                </li>
+                <li class="flex items-start gap-3">
+                    <i class="fas fa-code text-sky-400 mt-1 w-5 text-center"></i>
+                    <span class="text-slate-300">Python, C++, Java, SQL</span>
+                </li>
+                <li class="flex items-start gap-3">
+                    <i class="fas fa-rocket text-sky-400 mt-1 w-5 text-center"></i>
+                    <span class="text-slate-300">PyTorch, TensorFlow, OpenCV, Docker</span>
+                </li>
+                <li class="flex items-start gap-3">
+                    <i class="fas fa-phone text-sky-400 mt-1 w-5 text-center"></i>
+                    <a href="tel:+919061731935" class="text-slate-300 hover:text-sky-400 transition-colors">
+                        +91-9061731935
+                    </a>
+                </li>
+                <li class="flex items-start gap-3">
+                    <i class="fas fa-envelope text-sky-400 mt-1 w-5 text-center"></i>
+                    <a href="mailto:rohithparambil@gmail.com" class="text-slate-300 hover:text-sky-400 transition-colors">
+                        rohithparambil@gmail.com
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════
+     PROJECTS
+     ════════════════════════════════════════════════════════ -->
+<section id="projects" class="max-w-6xl mx-auto px-6 py-20">
+    <h2 class="text-3xl font-bold mb-4 flex items-center gap-4 reveal">
+        <span class="h-1 w-12 bg-sky-500 rounded"></span> Technical Projects
+    </h2>
+    <p class="text-slate-400 mb-12 ml-16 reveal">End-to-end AI solutions spanning computer vision, predictive analytics, and real-time deployment.</p>
+
+    <div class="grid md:grid-cols-2 gap-8">
+
+        <!-- ── Project 1: Pothole Detection ── -->
+        <div class="card p-8 rounded-3xl flex flex-col justify-between reveal">
+            <div>
+                <div class="flex justify-between items-start mb-2">
+                    <span class="text-[10px] font-mono text-emerald-400 bg-emerald-400/10 px-3 py-1 rounded-full uppercase tracking-wider font-bold">
+                        🔴 Live Demo
+                    </span>
+                    <i class="fas fa-road text-sky-400 text-xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold mt-3 mb-3">Real-Time Pothole Detection</h3>
+                <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                    Object detection system using <strong class="text-slate-300">Faster R-CNN with ResNet50-FPN</strong> backbone
+                    in PyTorch for automated road damage identification. Trained on 665 annotated images with 1,319 pothole instances,
+                    achieving <strong class="text-slate-300">62.9% AP@50</strong> and
+                    <strong class="text-slate-300">76.5% Recall</strong>. Deployed as a Docker-based web app on Hugging Face Spaces.
+                </p>
+                <ul class="text-slate-500 text-xs mb-6 space-y-2 list-disc ml-4">
+                    <li>Multi-scale feature extraction via Feature Pyramid Network (FPN) with transfer learning from ImageNet.</li>
+                    <li>Data augmentation pipeline using Albumentations and OpenCV for improved model robustness.</li>
+                    <li>Interactive Gradio interface with adjustable confidence threshold for real-time inference.</li>
+                    <li>Containerized deployment using Docker on Hugging Face Spaces.</li>
+                </ul>
+            </div>
+            <div class="flex flex-wrap gap-2 text-[10px] font-mono text-sky-300 uppercase mb-4">
+                <span>#PyTorch</span> <span>#FasterRCNN</span> <span>#ResNet50-FPN</span> <span>#OpenCV</span> <span>#Gradio</span> <span>#Docker</span>
+            </div>
+            <div class="flex gap-3">
+                <a href="https://github.com/rohithr87/pothole-detection"
+                   target="_blank" rel="noopener"
+                   class="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-semibold text-slate-900 bg-sky-400 rounded-xl hover:bg-sky-500 hover:text-white hover:shadow-lg hover:scale-[1.02] active:scale-100 transition-all duration-300 flex-1 group">
+                    <i class="fas fa-code text-xs group-hover:rotate-12 transition-transform"></i> Code
                 </a>
-                <a href="https://linkedin.com/in/rohith-r-55215b290/" class="card px-6 py-3 rounded-xl flex items-center gap-2">
-                    <i class="fab fa-linkedin"></i> LinkedIn
+                <a href="https://huggingface.co/spaces/rohithr12/pothole-detection"
+                   target="_blank" rel="noopener"
+                   class="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-semibold text-white bg-purple-600 rounded-xl hover:bg-purple-700 hover:shadow-lg hover:scale-[1.02] active:scale-100 transition-all duration-300 flex-1 group">
+                    <i class="fas fa-external-link-alt text-xs group-hover:rotate-12 transition-transform"></i> Live Demo
                 </a>
             </div>
         </div>
-        <div class="lg:w-1/3 mt-12 lg:mt-0 flex justify-center">
-            <div class="w-64 h-64 bg-sky-500/20 rounded-full border-4 border-sky-500/50 overflow-hidden flex items-center justify-center">
-    <img src="static/1755189804789.jpg" alt="Rohith R" class="w-full h-full object-cover">
-</div>
-        </div>
-    </section>
-</section>
 
-<section id="projects" class="max-w-6xl mx-auto px-6 py-10">
-<section id="projects" class="max-w-6xl mx-auto px-6 py-10">
-    <h2 class="text-3xl font-bold mb-12 flex items-center gap-4">
-        <span class="h-1 w-12 bg-sky-500"></span> Technical Projects
-    </h2>
-    <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
-        
-        <div class="card p-8 rounded-3xl flex flex-col justify-between">
+        <!-- ── Project 2: Self-Driving Behavioral Cloning ── -->
+        <div class="card p-8 rounded-3xl flex flex-col justify-between reveal delay-100">
+            <div>
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-2xl font-bold">Autonomous Driving — Behavioral Cloning</h3>
+                    <i class="fas fa-car text-sky-400 text-xl"></i>
+                </div>
+                <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                    <strong class="text-slate-300">CNN-based behavioral cloning</strong> model using TensorFlow/Keras to predict 
+                    steering angles from camera images in real-time within the Udacity simulator environment.
+                </p>
+                <ul class="text-slate-500 text-xs mb-6 space-y-2 list-disc ml-4">
+                    <li>Processed and augmented <strong>90,000+</strong> driving images with OpenCV for cropping, normalization, and color space conversion.</li>
+                    <li>Implemented data augmentation including flipping, brightness adjustment, and shadow simulation to reduce overfitting.</li>
+                    <li>Achieved smooth lane navigation in simulation environments through end-to-end learning.</li>
+                </ul>
+            </div>
+            <div class="flex flex-wrap gap-2 text-[10px] font-mono text-sky-300 uppercase mb-4">
+                <span>#TensorFlow</span> <span>#Keras</span> <span>#CNN</span> <span>#OpenCV</span> <span>#ComputerVision</span>
+            </div>
+            <a href="https://github.com/rohithr87/Self-Driving-Car-Behavioral-Cloning"
+               target="_blank" rel="noopener"
+               class="inline-flex items-center justify-center gap-2 px-6 py-2.5 text-sm font-semibold text-slate-900 bg-sky-400 rounded-xl hover:bg-sky-500 hover:text-white hover:shadow-lg hover:scale-[1.02] active:scale-100 transition-all duration-300 w-full group">
+                <i class="fas fa-code text-xs group-hover:rotate-12 transition-transform"></i> View Code
+            </a>
+        </div>
+
+        <!-- ── Project 3: Molecular Toxicity Prediction ── -->
+        <div class="card p-8 rounded-3xl flex flex-col justify-between reveal delay-200">
             <div>
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-2xl font-bold">Molecular Toxicity Prediction</h3>
                     <i class="fas fa-flask text-sky-400 text-xl"></i>
                 </div>
                 <p class="text-slate-400 text-sm mb-4 leading-relaxed">
-                    Built a deep learning-based toxicity prediction system using Graph Convolutional Networks (DeepChem) trained on the Tox21 dataset. 
-                    Features a full-stack platform with a Flask backend and React frontend for real-time SMILES input and results visualization.
+                    Deep learning-based toxicity prediction using <strong class="text-slate-300">Graph Convolutional Networks</strong>
+                    (DeepChem) on the Tox21 dataset. Full-stack platform with Flask backend and React frontend for 
+                    real-time SMILES input and results visualization.
                 </p>
                 <ul class="text-slate-500 text-xs mb-6 space-y-2 list-disc ml-4">
                     <li>Integrated RDKit to compute molecular descriptors like Molecular Weight and LogP.</li>
-                    <li>Developed 3D visualization using RDKit + Three.js with dynamic confidence charts.</li>
-                    <li>Utilized Gemini AI for natural-language scientific interpretations.</li>
+                    <li>Developed 3D molecular visualization using RDKit + Three.js with dynamic confidence charts.</li>
+                    <li>Utilized Gemini AI for natural-language scientific interpretations of results.</li>
                 </ul>
             </div>
-            <div class="flex flex-wrap gap-2 text-[10px] font-mono text-sky-300 uppercase">
-                <span>#DeepChem</span> <span>#React</span> <span>#Flask</span> <span>#RDKit</span> <span>#Gemini-AI</span>
+            <div class="flex flex-wrap gap-2 text-[10px] font-mono text-sky-300 uppercase mb-4">
+                <span>#DeepChem</span> <span>#GCN</span> <span>#React</span> <span>#Flask</span> <span>#RDKit</span> <span>#Gemini-AI</span>
             </div>
-            <a href="https://github.com/rohithr87/molecular_toxicity_predictor" 
-            class="inline-flex items-center justify-center gap-2 px-6 py-2.5 text-sm font-semibold text-slate-900 bg-sky-400 rounded-xl hover:bg-sky-500 hover:text-white hover:shadow-lg hover:scale-[1.02] active:bg-sky-600 active:scale-100 transition-all duration-300 w-full group">
-                <i class="fas fa-code text-xs group-hover:scale-110 group-hover:rotate-12 transition-transform"></i>
-                View Code
+            <a href="https://github.com/rohithr87/molecular_toxicity_predictor"
+               target="_blank" rel="noopener"
+               class="inline-flex items-center justify-center gap-2 px-6 py-2.5 text-sm font-semibold text-slate-900 bg-sky-400 rounded-xl hover:bg-sky-500 hover:text-white hover:shadow-lg hover:scale-[1.02] active:scale-100 transition-all duration-300 w-full group">
+                <i class="fas fa-code text-xs group-hover:rotate-12 transition-transform"></i> View Code
             </a>
         </div>
 
-        <div class="card p-8 rounded-3xl flex flex-col justify-between">
+        <!-- ── Project 4: Heart Disease Prediction ── -->
+        <div class="card p-8 rounded-3xl flex flex-col justify-between reveal delay-300">
             <div>
                 <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-2xl font-bold">Self-Driving Behavioral Cloning</h3>
-                    <i class="fas fa-car text-sky-400 text-xl"></i>
-                </div>
-                <p class="text-slate-400 text-sm mb-4 leading-relaxed">
-                    Developed a CNN-based behavioral cloning model using TensorFlow to predict steering angles in real time within the Udacity simulator environment.
-                </p>
-                <ul class="text-slate-500 text-xs mb-6 space-y-2 list-disc ml-4">
-                    <li>Processed and augmented 90,000+ driving images to improve generalization.</li>
-                    <li>Implemented data balancing, normalization, and cropping pipelines for model stability.</li>
-                    <li>Achieved smooth lane navigation in simulation environments.</li>
-                </ul>
-            </div>
-            <div class="flex flex-wrap gap-2 text-[10px] font-mono text-sky-300 uppercase">
-                <span>#TensorFlow</span> <span>#CNN</span> <span>#ComputerVision</span> <span>#Python</span>
-            </div>
-            <a href="https://github.com/rohithr87/Self-Driving-Car-Behavioral-Cloning" 
-                class="inline-flex items-center justify-center gap-2 px-6 py-2.5 text-sm font-semibold text-slate-900 bg-sky-400 rounded-xl hover:bg-sky-500 hover:text-white hover:shadow-lg hover:scale-[1.02] active:bg-sky-600 active:scale-100 transition-all duration-300 w-full group">
-                <i class="fas fa-code text-xs group-hover:scale-110 group-hover:rotate-12 transition-transform"></i>
-                View Code
-            </a>
-        </div>
-
-        <div class="card p-8 rounded-3xl flex flex-col justify-between">
-            <div>
-                <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-2xl font-bold">Heart Disease Prediction System</h3>
+                    <h3 class="text-2xl font-bold">Heart Disease Prediction</h3>
                     <i class="fas fa-heartbeat text-sky-400 text-xl"></i>
                 </div>
                 <p class="text-slate-400 text-sm mb-4 leading-relaxed">
-                    Engineered a clinically meaningful ML pipeline to predict heart disease risk, achieving a Recall of 0.92 and AUC of 0.94.
+                    Clinically meaningful ML pipeline to predict heart disease risk using multiple classifiers, 
+                    achieving <strong class="text-slate-300">F1: 0.89</strong>,
+                    <strong class="text-slate-300">Recall: 0.92</strong>, and
+                    <strong class="text-slate-300">AUC: 0.94</strong>.
                 </p>
                 <ul class="text-slate-500 text-xs mb-6 space-y-2 list-disc ml-4">
-                    <li>Analyzed 1,025 patient records using Scikit-learn during internship at EBTS.</li>
+                    <li>Analyzed 1,025 patient records using Scikit-learn with comprehensive EDA.</li>
                     <li>Applied IQR outlier removal, VIF multicollinearity checks, and feature scaling.</li>
-                    <li>Selected Logistic Regression over tree-based models to ensure reliability.</li>
+                    <li>Trained Logistic Regression, Random Forest, and SVM — selected LR for clinical reliability.</li>
+                    <li>Cross-validated to identify and mitigate overfitting before deployment.</li>
                 </ul>
             </div>
-            <div class="flex flex-wrap gap-2 text-[10px] font-mono text-sky-300 uppercase">
-                <span>#Scikit-Learn</span> <span>#Healthcare</span> <span>#EDA</span> <span>#ML-Pipeline</span>
+            <div class="flex flex-wrap gap-2 text-[10px] font-mono text-sky-300 uppercase mb-4">
+                <span>#Scikit-Learn</span> <span>#Healthcare</span> <span>#EDA</span> <span>#LogisticRegression</span> <span>#ML-Pipeline</span>
             </div>
-            <a href="https://github.com/rohithr87/heart-disease-predictor" 
-        class="inline-flex items-center justify-center gap-2 px-6 py-2.5 text-sm font-semibold text-slate-900 bg-sky-400 rounded-xl hover:bg-sky-500 hover:text-white hover:shadow-lg hover:scale-[1.02] active:bg-sky-600 active:scale-100 transition-all duration-300 w-full group">
-            <i class="fas fa-code text-xs group-hover:scale-110 group-hover:rotate-12 transition-transform"></i>
-            View Code
-        </a>
+            <a href="https://github.com/rohithr87/heart-disease-predictor"
+               target="_blank" rel="noopener"
+               class="inline-flex items-center justify-center gap-2 px-6 py-2.5 text-sm font-semibold text-slate-900 bg-sky-400 rounded-xl hover:bg-sky-500 hover:text-white hover:shadow-lg hover:scale-[1.02] active:scale-100 transition-all duration-300 w-full group">
+                <i class="fas fa-code text-xs group-hover:rotate-12 transition-transform"></i> View Code
+            </a>
         </div>
 
     </div>
 </section>
 
-<section id="experience" class="max-w-6xl mx-auto px-6 py-10">
-    <h2 class="text-3xl font-bold mb-12 flex items-center gap-4">
-        <span class="h-1 w-12 bg-sky-500"></span> Internships
+
+<!-- ════════════════════════════════════════════════════════
+     EXPERIENCE
+     ════════════════════════════════════════════════════════ -->
+<section id="experience" class="max-w-6xl mx-auto px-6 py-20">
+    <h2 class="text-3xl font-bold mb-12 flex items-center gap-4 reveal">
+        <span class="h-1 w-12 bg-sky-500 rounded"></span> Professional Experience
     </h2>
-    <div class="grid md:grid-cols-1 gap-6">
-        
-        <div class="card p-8 rounded-3xl border-l-4 border-l-sky-500">
-            <div class="flex flex-col md:flex-row justify-between mb-4">
-                <div>
-                    <h3 class="text-xl font-bold text-white">Machine Learning Intern</h3>
-                    <p class="text-sky-400 font-medium">Enterprise Building Training Solutions (EBTS)</p>
+
+    <div class="relative ml-6">
+        <div class="timeline-line"></div>
+
+        <!-- Internship 1: EBTS -->
+        <div class="relative pl-12 pb-12 reveal">
+            <div class="timeline-dot"></div>
+            <div class="card p-8 rounded-3xl">
+                <div class="flex flex-col md:flex-row justify-between mb-4">
+                    <div>
+                        <h3 class="text-xl font-bold text-white">Machine Learning Intern</h3>
+                        <p class="text-sky-400 font-medium">Enterprise Building Training Solutions (EBTS)</p>
+                    </div>
+                    <div class="text-slate-400 font-mono text-sm mt-2 md:mt-0 flex items-center gap-2 whitespace-nowrap">
+                        <i class="far fa-calendar-alt"></i> May — June 2025
+                    </div>
                 </div>
-                <div class="text-slate-400 font-mono text-sm mt-2 md:mt-0">
-                    May — June 2025 
+                <ul class="text-slate-400 text-sm space-y-2 list-disc ml-5">
+                    <li>Built end-to-end ML pipeline for Heart Disease Prediction on 1,025 patient records using Python and Scikit-learn.</li>
+                    <li>Performed data preprocessing including outlier removal (IQR), multicollinearity analysis (VIF), feature scaling, and EDA.</li>
+                    <li>Trained and evaluated multiple models with comprehensive metrics: accuracy, precision, recall, F1-score, ROC-AUC.</li>
+                    <li>Identified model overfitting through cross-validation and selected optimal classifier for deployment.</li>
+                    <li>Strengthened practical skills in ML workflow design, model evaluation, and data-driven decision making.</li>
+                </ul>
+                <div class="flex flex-wrap gap-2 mt-4 text-[10px] font-mono text-sky-300 uppercase">
+                    <span>#Python</span> <span>#Scikit-learn</span> <span>#Pandas</span> <span>#ML-Pipeline</span>
                 </div>
             </div>
-            <ul class="text-slate-400 text-sm space-y-2 list-disc ml-5">
-                <li>Built a Heart Disease Prediction pipeline using Python and Scikit-learn on 1,025 records.</li>
-                <li>Performed IQR outlier removal, VIF multicollinearity checks, and feature scaling.</li>
-                <li>Selected Logistic Regression (F1: 0.89, AUC: 0.94) as the optimal healthcare model.</li>
-            </ul>
         </div>
 
-        <div class="card p-8 rounded-3xl border-l-4 border-l-purple-500">
-            <div class="flex flex-col md:flex-row justify-between mb-4">
-                <div>
-                    <h3 class="text-xl font-bold text-white">Flutter Android App Development Intern</h3>
-                    <p class="text-purple-400 font-medium">Muthoot Institute of Technology & Science (MITS)</p>
+        <!-- Internship 2: MITS -->
+        <div class="relative pl-12 pb-4 reveal delay-100">
+            <div class="timeline-dot" style="border-color: #a78bfa;"></div>
+            <div class="card p-8 rounded-3xl">
+                <div class="flex flex-col md:flex-row justify-between mb-4">
+                    <div>
+                        <h3 class="text-xl font-bold text-white">Flutter App Development Intern</h3>
+                        <p class="text-purple-400 font-medium">Muthoot Institute of Technology & Science (MITS)</p>
+                    </div>
+                    <div class="text-slate-400 font-mono text-sm mt-2 md:mt-0 flex items-center gap-2 whitespace-nowrap">
+                        <i class="far fa-calendar-alt"></i> June 2 — 25, 2025
+                    </div>
                 </div>
-                <div class="text-slate-400 font-mono text-sm mt-2 md:mt-0">
-                    June 2 — 25, 2025
+                <ul class="text-slate-400 text-sm space-y-2 list-disc ml-5">
+                    <li>Completed intensive summer internship focusing on Flutter Android App Development.</li>
+                    <li>Applied Functional Programming principles to mobile application architecture.</li>
+                    <li>Gained hands-on experience in cross-platform UI design and state management.</li>
+                </ul>
+                <div class="flex flex-wrap gap-2 mt-4 text-[10px] font-mono text-purple-300 uppercase">
+                    <span>#Flutter</span> <span>#Dart</span> <span>#MobileApp</span> <span>#FunctionalProgramming</span>
                 </div>
             </div>
-            <ul class="text-slate-400 text-sm space-y-2 list-disc ml-5">
-                <li>Completed intensive summer internship focusing on Flutter Android App Development.</li>
-                <li>Applied Functional Programming principles to mobile application architecture.</li>
-                <li>Gained hands-on experience in cross-platform UI design and state management.</li>
-            </ul>
+        </div>
+    </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════
+     SKILLS
+     ════════════════════════════════════════════════════════ -->
+<section id="skills" class="max-w-6xl mx-auto px-6 py-20">
+    <h2 class="text-3xl font-bold mb-12 flex items-center gap-4 reveal">
+        <span class="h-1 w-12 bg-sky-500 rounded"></span> Technical Skills
+    </h2>
+
+    <div class="grid lg:grid-cols-2 gap-8">
+
+        <!-- Proficiency bars -->
+        <div class="card p-8 rounded-3xl reveal">
+            <h3 class="text-lg font-bold text-sky-400 mb-6 flex items-center gap-2">
+                <i class="fas fa-chart-bar"></i> Core Proficiency
+            </h3>
+            <div class="space-y-5">
+                <div>
+                    <div class="flex justify-between text-sm mb-1"><span>Python</span><span class="text-slate-500">95%</span></div>
+                    <div class="skill-bar"><div class="skill-bar-fill" data-width="95%"></div></div>
+                </div>
+                <div>
+                    <div class="flex justify-between text-sm mb-1"><span>PyTorch</span><span class="text-slate-500">85%</span></div>
+                    <div class="skill-bar"><div class="skill-bar-fill" data-width="85%"></div></div>
+                </div>
+                <div>
+                    <div class="flex justify-between text-sm mb-1"><span>TensorFlow / Keras</span><span class="text-slate-500">85%</span></div>
+                    <div class="skill-bar"><div class="skill-bar-fill" data-width="85%"></div></div>
+                </div>
+                <div>
+                    <div class="flex justify-between text-sm mb-1"><span>OpenCV</span><span class="text-slate-500">80%</span></div>
+                    <div class="skill-bar"><div class="skill-bar-fill" data-width="80%"></div></div>
+                </div>
+                <div>
+                    <div class="flex justify-between text-sm mb-1"><span>Scikit-learn / Pandas / NumPy</span><span class="text-slate-500">90%</span></div>
+                    <div class="skill-bar"><div class="skill-bar-fill" data-width="90%"></div></div>
+                </div>
+                <div>
+                    <div class="flex justify-between text-sm mb-1"><span>SQL</span><span class="text-slate-500">75%</span></div>
+                    <div class="skill-bar"><div class="skill-bar-fill" data-width="75%"></div></div>
+                </div>
+                <div>
+                    <div class="flex justify-between text-sm mb-1"><span>C++ / Java</span><span class="text-slate-500">65%</span></div>
+                    <div class="skill-bar"><div class="skill-bar-fill" data-width="65%"></div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tag-based categories -->
+        <div class="space-y-8">
+            <!-- Computer Vision -->
+            <div class="card p-8 rounded-3xl reveal delay-100">
+                <h3 class="text-lg font-bold text-sky-400 mb-5 flex items-center gap-2">
+                    <i class="fas fa-eye"></i> Computer Vision
+                </h3>
+                <div class="flex flex-wrap gap-3">
+                    <span class="px-4 py-2 bg-slate-700 rounded-xl text-sm hover:bg-sky-500/20 hover:text-sky-400 transition-all cursor-default">Object Detection</span>
+                    <span class="px-4 py-2 bg-slate-700 rounded-xl text-sm hover:bg-sky-500/20 hover:text-sky-400 transition-all cursor-default">Faster R-CNN</span>
+                    <span class="px-4 py-2 bg-slate-700 rounded-xl text-sm hover:bg-sky-500/20 hover:text-sky-400 transition-all cursor-default">FPN</span>
+                    <span class="px-4 py-2 bg-slate-700 rounded-xl text-sm hover:bg-sky-500/20 hover:text-sky-400 transition-all cursor-default">Image Classification</span>
+                    <span class="px-4 py-2 bg-slate-700 rounded-xl text-sm hover:bg-sky-500/20 hover:text-sky-400 transition-all cursor-default">Data Augmentation</span>
+                    <span class="px-4 py-2 bg-slate-700 rounded-xl text-sm hover:bg-sky-500/20 hover:text-sky-400 transition-all cursor-default">Transfer Learning</span>
+                    <span class="px-4 py-2 bg-slate-700 rounded-xl text-sm hover:bg-sky-500/20 hover:text-sky-400 transition-all cursor-default">Region Proposal Networks</span>
+                </div>
+            </div>
+
+            <!-- Tools & Platforms -->
+            <div class="card p-8 rounded-3xl reveal delay-200">
+                <h3 class="text-lg font-bold text-sky-400 mb-5 flex items-center gap-2">
+                    <i class="fas fa-tools"></i> Tools & Platforms
+                </h3>
+                <div class="flex flex-wrap gap-3">
+                    <span class="px-4 py-2 bg-slate-700 rounded-xl text-sm hover:bg-purple-500/20 hover:text-purple-400 transition-all cursor-default">Git & GitHub</span>
+                    <span class="px-4 py-2 bg-slate-700 rounded-xl text-sm hover:bg-purple-500/20 hover:text-purple-400 transition-all cursor-default">Docker</span>
+                    <span class="px-4 py-2 bg-slate-700 rounded-xl text-sm hover:bg-purple-500/20 hover:text-purple-400 transition-all cursor-default">Gradio</span>
+                    <span class="px-4 py-2 bg-slate-700 rounded-xl text-sm hover:bg-purple-500/20 hover:text-purple-400 transition-all cursor-default">Flask</span>
+                    <span class="px-4 py-2 bg-slate-700 rounded-xl text-sm hover:bg-purple-500/20 hover:text-purple-400 transition-all cursor-default">React</span>
+                    <span class="px-4 py-2 bg-slate-700 rounded-xl text-sm hover:bg-purple-500/20 hover:text-purple-400 transition-all cursor-default">Streamlit</span>
+                    <span class="px-4 py-2 bg-slate-700 rounded-xl text-sm hover:bg-purple-500/20 hover:text-purple-400 transition-all cursor-default">Hugging Face Spaces</span>
+                    <span class="px-4 py-2 bg-slate-700 rounded-xl text-sm hover:bg-purple-500/20 hover:text-purple-400 transition-all cursor-default">Google Colab</span>
+                    <span class="px-4 py-2 bg-slate-700 rounded-xl text-sm hover:bg-purple-500/20 hover:text-purple-400 transition-all cursor-default">Jupyter Notebook</span>
+                    <span class="px-4 py-2 bg-slate-700 rounded-xl text-sm hover:bg-purple-500/20 hover:text-purple-400 transition-all cursor-default">VS Code</span>
+                </div>
+            </div>
+
+            <!-- Core CS -->
+            <div class="card p-8 rounded-3xl reveal delay-300">
+                <h3 class="text-lg font-bold text-sky-400 mb-5 flex items-center gap-2">
+                    <i class="fas fa-microchip"></i> Core Computer Science
+                </h3>
+                <div class="flex flex-wrap gap-3">
+                    <span class="px-4 py-2 bg-slate-700 rounded-xl text-sm hover:bg-emerald-500/20 hover:text-emerald-400 transition-all cursor-default">Data Structures & Algorithms</span>
+                    <span class="px-4 py-2 bg-slate-700 rounded-xl text-sm hover:bg-emerald-500/20 hover:text-emerald-400 transition-all cursor-default">DBMS</span>
+                    <span class="px-4 py-2 bg-slate-700 rounded-xl text-sm hover:bg-emerald-500/20 hover:text-emerald-400 transition-all cursor-default">Operating Systems</span>
+                    <span class="px-4 py-2 bg-slate-700 rounded-xl text-sm hover:bg-emerald-500/20 hover:text-emerald-400 transition-all cursor-default">Statistical Analysis</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════
+     EDUCATION
+     ════════════════════════════════════════════════════════ -->
+<section id="education" class="max-w-6xl mx-auto px-6 py-20">
+    <h2 class="text-3xl font-bold mb-12 flex items-center gap-4 reveal">
+        <span class="h-1 w-12 bg-sky-500 rounded"></span> Education
+    </h2>
+
+    <div class="space-y-6">
+
+        <!-- B.Tech -->
+        <div class="card p-8 rounded-3xl reveal">
+            <div class="flex flex-col md:flex-row justify-between items-start">
+                <div class="flex items-start gap-4">
+                    <div class="w-14 h-14 bg-sky-500/20 rounded-2xl flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-graduation-cap text-sky-400 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white">B.Tech in Computer Science and Engineering</h3>
+                        <p class="text-sky-400 font-medium mt-1">Cochin University of Science and Technology (CUSAT)</p>
+                        <p class="text-slate-400 text-sm mt-2">
+                            CGPA: <strong class="text-emerald-400 text-base">9.03</strong> / 10
+                        </p>
+                    </div>
+                </div>
+                <div class="text-slate-400 font-mono text-sm mt-4 md:mt-0 flex items-center gap-2 whitespace-nowrap">
+                    <i class="far fa-calendar-alt"></i> 2022 — 2026
+                </div>
+            </div>
+        </div>
+
+        <!-- HSS -->
+        <div class="card p-8 rounded-3xl reveal delay-100">
+            <div class="flex flex-col md:flex-row justify-between items-start">
+                <div class="flex items-start gap-4">
+                    <div class="w-14 h-14 bg-purple-500/20 rounded-2xl flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-school text-purple-400 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white">Higher Secondary Education (Bio-Science)</h3>
+                        <p class="text-purple-400 font-medium mt-1">BJSM Madathi HSS</p>
+                    </div>
+                </div>
+                <div class="text-slate-400 font-mono text-sm mt-4 md:mt-0 flex items-center gap-2 whitespace-nowrap">
+                    <i class="far fa-calendar-alt"></i> 2019 — 2021
+                </div>
+            </div>
+        </div>
+
+        <!-- SSLC -->
+        <div class="card p-8 rounded-3xl reveal delay-200">
+            <div class="flex flex-col md:flex-row justify-between items-start">
+                <div class="flex items-start gap-4">
+                    <div class="w-14 h-14 bg-emerald-500/20 rounded-2xl flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-book text-emerald-400 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white">SSLC</h3>
+                        <p class="text-emerald-400 font-medium mt-1">BJSM Madathi HS</p>
+                    </div>
+                </div>
+                <div class="text-slate-400 font-mono text-sm mt-4 md:mt-0 flex items-center gap-2 whitespace-nowrap">
+                    <i class="far fa-calendar-alt"></i> 2018 — 2019
+                </div>
+            </div>
         </div>
 
     </div>
 </section>
-    <section id="skills" class="max-w-6xl mx-auto px-6 py-20">
-        <div class="card p-10 rounded-3xl bg-slate-800/50">
-            <h2 class="text-3xl font-bold mb-8">Technical Arsenal</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div>
-                    <h4 class="text-sky-400 font-bold mb-2">Languages</h4>
-                    <p class="text-sm">Python, Java, SQL</p>
-                </div>
-                <div>
-                    <h4 class="text-sky-400 font-bold mb-2">ML Frameworks</h4>
-                    <p class="text-sm">TensorFlow, PyTorch, Scikit-learn, Keras</p>
-                </div>
-                <div>
-                    <h4 class="text-sky-400 font-bold mb-2">Tools</h4>
-                    <p class="text-sm">Flask, Streamlit, Git, OpenCV</p>
-                </div>
-                <div>
-                    <h4 class="text-sky-400 font-bold mb-2">Core CS</h4>
-                    <p class="text-sm">DSA, DBMS, OS</p>
-                </div>
+
+
+<!-- ════════════════════════════════════════════════════════
+     CERTIFICATIONS
+     ════════════════════════════════════════════════════════ -->
+<section id="certifications" class="max-w-6xl mx-auto px-6 py-20">
+    <h2 class="text-3xl font-bold mb-12 flex items-center gap-4 reveal">
+        <span class="h-1 w-12 bg-sky-500 rounded"></span> Certifications
+    </h2>
+
+    <div class="grid md:grid-cols-2 gap-6">
+
+        <!-- Cert 1 -->
+        <div class="card p-6 rounded-2xl flex items-start gap-4 reveal">
+            <div class="w-12 h-12 bg-sky-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-certificate text-sky-400 text-lg"></i>
+            </div>
+            <div>
+                <h4 class="font-bold text-white">Machine Learning Internship Certificate</h4>
+                <p class="text-sky-400 text-sm font-medium mt-1">Enterprise Building Training Solutions (EBTS)</p>
+                <p class="text-slate-500 text-xs mt-1 font-mono">2025</p>
             </div>
         </div>
-    </section>
 
-    <footer class="text-center py-10 border-t border-slate-800 text-slate-500 text-sm">
-        <p>&copy; 2026 <a href="https://github.com/ananthu-pm" >built with passion in kerala.</a></p>
-    </footer>
+        <!-- Cert 2 -->
+        <div class="card p-6 rounded-2xl flex items-start gap-4 reveal delay-100">
+            <div class="w-12 h-12 bg-emerald-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                <i class="fab fa-google text-emerald-400 text-lg"></i>
+            </div>
+            <div>
+                <h4 class="font-bold text-white">Google AI Essentials</h4>
+                <p class="text-emerald-400 text-sm font-medium mt-1">Coursera (Google)</p>
+                <p class="text-slate-500 text-xs mt-1 font-mono">2025</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════
+     CONTACT / CTA
+     ════════════════════════════════════════════════════════ -->
+<section class="max-w-6xl mx-auto px-6 py-20 reveal">
+    <div class="card p-12 rounded-3xl text-center bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-sky-500/20">
+        <div class="w-16 h-16 bg-sky-500/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <i class="fas fa-rocket text-sky-400 text-2xl"></i>
+        </div>
+        <h2 class="text-3xl lg:text-4xl font-extrabold mb-4">Let's Build Something Together</h2>
+        <p class="text-slate-400 max-w-xl mx-auto mb-8 leading-relaxed">
+            I'm actively seeking full-time opportunities in <strong class="text-slate-300">Machine Learning</strong>,
+            <strong class="text-slate-300">Computer Vision</strong>, and <strong class="text-slate-300">AI Engineering</strong>.
+            If you think I'd be a good fit for your team, let's connect!
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center">
+            <a href="mailto:rohithparambil@gmail.com"
+               class="bg-sky-500 hover:bg-sky-600 px-8 py-3.5 rounded-xl text-white font-semibold transition-all hover:shadow-lg hover:shadow-sky-500/25 flex items-center gap-2">
+                <i class="fas fa-paper-plane"></i> rohithparambil@gmail.com
+            </a>
+            <a href="tel:+919061731935"
+               class="card px-8 py-3.5 rounded-xl font-semibold hover:text-sky-400 flex items-center gap-2">
+                <i class="fas fa-phone"></i> +91-9061731935
+            </a>
+            <a href="https://linkedin.com/in/rohith-r-55215b290/"
+               target="_blank" rel="noopener"
+               class="card px-8 py-3.5 rounded-xl font-semibold hover:text-sky-400 flex items-center gap-2">
+                <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════
+     FOOTER
+     ════════════════════════════════════════════════════════ -->
+<footer class="border-t border-slate-800">
+    <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm">
+        <p>&copy; 2025 Rohith R. Designed & built with ❤️ in Kerala 🌴</p>
+        <div class="flex gap-6 mt-4 md:mt-0">
+            <a href="https://github.com/rohithr87" target="_blank" rel="noopener" class="hover:text-sky-400 transition-colors" aria-label="GitHub">
+                <i class="fab fa-github text-lg"></i>
+            </a>
+            <a href="https://linkedin.com/in/rohith-r-55215b290/" target="_blank" rel="noopener" class="hover:text-sky-400 transition-colors" aria-label="LinkedIn">
+                <i class="fab fa-linkedin text-lg"></i>
+            </a>
+            <a href="https://huggingface.co/rohithr12" target="_blank" rel="noopener" class="hover:text-sky-400 transition-colors" aria-label="Hugging Face">
+                🤗
+            </a>
+            <a href="mailto:rohithparambil@gmail.com" class="hover:text-sky-400 transition-colors" aria-label="Email">
+                <i class="fas fa-envelope text-lg"></i>
+            </a>
+        </div>
+    </div>
+</footer>
+
+
+<!-- ════════════════════════════════════════════════════════
+     SCRIPTS
+     ════════════════════════════════════════════════════════ -->
+<script>
+    // ── Mobile Menu Toggle ──
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('open');
+        const icon = menuToggle.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.add('fa-bars');
+            icon.classList.remove('fa-times');
+        });
+    });
+
+    // ── Scroll Reveal ──
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealOnScroll = () => {
+        const windowHeight = window.innerHeight;
+        revealElements.forEach(el => {
+            const elementTop = el.getBoundingClientRect().top;
+            if (elementTop < windowHeight - 80) {
+                el.classList.add('active');
+            }
+        });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+
+    // ── Skill Bar Animation ──
+    const skillBars = document.querySelectorAll('.skill-bar-fill');
+    let skillsAnimated = false;
+    const animateSkillBars = () => {
+        if (skillsAnimated) return;
+        const skillsSection = document.getElementById('skills');
+        if (!skillsSection) return;
+        const top = skillsSection.getBoundingClientRect().top;
+        if (top < window.innerHeight - 100) {
+            skillsAnimated = true;
+            skillBars.forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                bar.style.width = width;
+            });
+        }
+    };
+    window.addEventListener('scroll', animateSkillBars);
+    window.addEventListener('load', animateSkillBars);
+
+    // ── Counter Animation ──
+    const counters = document.querySelectorAll('.stat-number');
+    let countersAnimated = false;
+    const animateCounters = () => {
+        if (countersAnimated) return;
+        const statsCard = document.querySelector('.stat-card');
+        if (!statsCard) return;
+        const top = statsCard.getBoundingClientRect().top;
+        if (top < window.innerHeight - 50) {
+            countersAnimated = true;
+            counters.forEach(counter => {
+                const target = parseFloat(counter.getAttribute('data-target'));
+                const isDecimal = counter.getAttribute('data-decimal') === 'true';
+                const duration = 1500;
+                const startTime = performance.now();
+
+                const update = (currentTime) => {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    // Ease out cubic
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    const current = eased * target;
+
+                    if (isDecimal) {
+                        counter.textContent = current.toFixed(2);
+                    } else {
+                        counter.textContent = Math.ceil(current);
+                    }
+
+                    if (progress < 1) {
+                        requestAnimationFrame(update);
+                    } else {
+                        if (isDecimal) {
+                            counter.textContent = target.toFixed(2);
+                        } else {
+                            counter.textContent = target + '+';
+                        }
+                    }
+                };
+                requestAnimationFrame(update);
+            });
+        }
+    };
+    window.addEventListener('scroll', animateCounters);
+    window.addEventListener('load', animateCounters);
+
+    // ── Active Nav Highlight ──
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('nav .nav-link');
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 120;
+            if (scrollY >= sectionTop) {
+                current = section.getAttribute('id');
+            }
+        });
+        navLinks.forEach(link => {
+            link.classList.remove('nav-link-active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('nav-link-active');
+            }
+        });
+    });
+
+    // ── Back to Top Button ──
+    const backToTop = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    });
+</script>
 
 </body>
 </html>
-
-
